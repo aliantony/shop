@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 //@EnableRedisHttpSession
 @EnableTransactionManagement
 //@EnableCaching
-//@EnableScheduling
+@EnableScheduling
 public class ShopApplication {
 
 	public static void main(String[] args) {

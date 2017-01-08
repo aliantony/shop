@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.thunisoft.mapper.PhoneMapper">
+    <insert id="save" parameterType="com.thunisoft.pojo.Phone">
+        insert into t_phone(id,num,phonename,screen,disk,memory,price)
+         values(
+         #{id,jdbcType=VARCHAR},
+         #{num,jdbcType=VARCHAR},
+         #{phonename,jdbcType=VARCHAR},
+         #{screen,jdbcType=VARCHAR},
+         #{disk,jdbcType=VARCHAR},
+         #{memory,jdbcType=VARCHAR},
+         #{price,jdbcType=VARCHAR})
+    </insert>
+    <select id="selectById" resultType="com.thunisoft.pojo.Phone">
+        select * from t_phone where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <update id="updateById" parameterType="com.thunisoft.pojo.Phone">
+        update t_phone set
+        num = #{num,jdbcType=VARCHAR} ,
+        phonename = #{phonename,jdbcType=VARCHAR} ,
+        screen = #{screen,jdbcType=VARCHAR} ,
+        disk = #{disk,jdbcType=VARCHAR},
+        memory = #{memory,jdbcType=VARCHAR},
+        price = #{price,jdbcType=VARCHAR},
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    <delete id="deleteById">
+        delete from t_phone where id = #{id,jdbcType=VARCHAR}
+    </delete>
+    <select id="queryAll" resultType="com.thunisoft.pojo.Phone">
+        select * from t_phone
+    </select>
+</mapper>

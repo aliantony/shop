@@ -3,19 +3,21 @@ server:
     cookie:
       http-only: true
   port: 8080
+  context-path: /shop
 
 spring:
-  cache:
-    type: redis
-
   datasource:
     url: jdbc:mysql://localhost:3306/shop?useUnicode=true&characterEncoding=utf-8
     username: root
     password:
     driver-class-name: com.mysql.jdbc.Driver
 
+  cache:
+      type: redis
+
   thymeleaf:
     cache: false
+
 
 mybatis:
   typeAliasesPackage: com.thunisoft.pojo
