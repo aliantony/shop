@@ -1,9 +1,10 @@
 package com.thunisoft.mapper;
 
-import com.thunisoft.pojo.User;
+import com.thunisoft.domain.User;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by yhan219 on 2017/1/7.

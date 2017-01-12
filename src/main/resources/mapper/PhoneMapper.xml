@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.thunisoft.mapper.PhoneMapper">
-    <insert id="save" parameterType="com.thunisoft.pojo.Phone">
+    <insert id="save" parameterType="com.thunisoft.domain.Phone">
         insert into t_phone(id,num,phonename,screen,disk,memory,price)
          values(
          #{id,jdbcType=VARCHAR},
@@ -13,10 +13,10 @@
          #{memory,jdbcType=VARCHAR},
          #{price,jdbcType=VARCHAR})
     </insert>
-    <select id="selectById" resultType="com.thunisoft.pojo.Phone">
+    <select id="selectById" resultType="com.thunisoft.domain.Phone">
         select * from t_phone where id = #{id,jdbcType=VARCHAR}
     </select>
-    <update id="updateById" parameterType="com.thunisoft.pojo.Phone">
+    <update id="updateById" parameterType="com.thunisoft.domain.Phone">
         update t_phone set
         num = #{num,jdbcType=VARCHAR} ,
         phonename = #{phonename,jdbcType=VARCHAR} ,
@@ -29,7 +29,10 @@
     <delete id="deleteById">
         delete from t_phone where id = #{id,jdbcType=VARCHAR}
     </delete>
-    <select id="queryAll" resultType="com.thunisoft.pojo.Phone">
+    <select id="queryAll" resultType="com.thunisoft.domain.Phone">
         select * from t_phone
+    </select>
+    <select id="getPage" resultType="com.thunisoft.domain.Phone">
+        select * from t_phone limit #{start},#{pageSize}
     </select>
 </mapper>

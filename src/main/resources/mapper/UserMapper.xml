@@ -2,23 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.thunisoft.mapper.UserMapper" >
-    <insert id="save" parameterType="com.thunisoft.pojo.User">
+    <insert id="save" parameterType="com.thunisoft.domain.User">
         insert into t_user(id,username,password,tel) values(#{id,jdbcType=VARCHAR},#{username,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR},#{tel,jdbcType=VARCHAR})
     </insert>
-    <select id="selectById" resultType="com.thunisoft.pojo.User">
+    <select id="selectById" resultType="com.thunisoft.domain.User">
         select * from t_user where id = #{id,jdbcType=VARCHAR}
     </select>
-    <update id="updateById" parameterType="com.thunisoft.pojo.User">
+    <update id="updateById" parameterType="com.thunisoft.domain.User">
         update t_user set
         username = #{username,jdbcType=VARCHAR} ,
         password = #{password,jdbcType=VARCHAR} ,
-        tel = #{tel,jdbcType=VARCHAR}
+        tel = #{tel,jdbcType=VARCHAR},
+        role = #{role,jdbcType=INTEGER}
         where id = #{id,jdbcType=VARCHAR}
     </update>
     <delete id="deleteById">
         delete from t_user where id = #{id,jdbcType=VARCHAR}
     </delete>
-    <select id="queryAll" resultType="com.thunisoft.pojo.User">
+    <select id="queryAll" resultType="com.thunisoft.domain.User">
         select * from t_user
     </select>
 </mapper>

@@ -1,6 +1,6 @@
 package com.thunisoft.mapper;
 
-import com.thunisoft.pojo.Phone;
+import com.thunisoft.domain.Phone;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,8 +1,8 @@
 package com.thunisoft.mapper;
 
-import com.thunisoft.pojo.Phone;
-import com.thunisoft.pojo.User;
+import com.thunisoft.domain.Phone;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -21,5 +21,7 @@ public interface PhoneMapper {
     int deleteById(String id);
 
     List<Phone> queryAll();
+
+    List<Phone> getPage(@Param("start") int start, @Param("pageSize") int pageSize);
 
 }

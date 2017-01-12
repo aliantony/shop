@@ -1,6 +1,6 @@
 package com.thunisoft.schedule;
 
-import com.thunisoft.pojo.Phone;
+import com.thunisoft.domain.Phone;
 import com.thunisoft.service.PhoneService;
 import com.thunisoft.spider.JdPhoneSpider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +8,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -19,13 +20,13 @@ public class PhoneSchedule {
     @Autowired
     private PhoneService phoneService;
 
-    @Scheduled(cron = "0 0/5 * * * ? ")
+    //@Scheduled(cron = "0 0/5 * * * ? ")
     public void getAndSavePhoneFromJd() throws IOException {
         List<Phone> phones = JdPhoneSpider.getAllPhone();
         phoneService.saveAll(phones);
     }
     //@Scheduled(fixedRate = 10000)
     public void test() throws IOException {
-        System.out.println("定时任务执行");
+        System.out.println("定时任务执行，当前时间："+new Date().toString());
     }
 }

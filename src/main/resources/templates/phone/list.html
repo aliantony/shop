@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>手机名</th>
+        <th>产品编号</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="phone : ${phones}">
+        <th th:text="${phone.phonename}">姓名</th>
+        <th th:text="${phone.num}">电话号码</th>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

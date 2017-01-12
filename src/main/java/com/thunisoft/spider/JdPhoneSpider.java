@@ -1,6 +1,6 @@
 package com.thunisoft.spider;
 
-import com.thunisoft.pojo.Phone;
+import com.thunisoft.domain.Phone;
 import com.thunisoft.utils.ShopUUID;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

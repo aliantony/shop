@@ -1,9 +1,11 @@
-package com.thunisoft.pojo;
+package com.thunisoft.domain;
+
+import java.io.Serializable;
 
 /**
  * Created by yhan219 on 2017/1/7.
  */
-public class Phone {
+public class Phone implements Serializable {
 
     private String id;
 

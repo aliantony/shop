@@ -1,4 +1,4 @@
-package com.thunisoft.pojo;
+package com.thunisoft.domain;
 
 import java.io.Serializable;
 
@@ -14,6 +14,8 @@ public class User implements Serializable {
     private String password;
 
     private String tel;
+
+    private Integer role;
 
     public void setPassword(String password) {
         this.password = password;
@@ -45,5 +47,13 @@ public class User implements Serializable {
 
     public String getId() {
         return id;
+    }
+
+    public void setRole(Integer role) {
+        this.role = role;
+    }
+
+    public Integer getRole() {
+        return role;
     }
 }

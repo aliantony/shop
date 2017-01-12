@@ -10,16 +10,53 @@ spring:
     url: jdbc:mysql://localhost:3306/shop?useUnicode=true&characterEncoding=utf-8
     username: root
     password:
-    driver-class-name: com.mysql.jdbc.Driver
+   # driver-class-name: com.mysql.jdbc.Driver  #spring boot能根据url判断需要哪个驱动，此处可不写
 
   cache:
-      type: redis
+      type: redis #spring boot会根据一定的顺序查找项目中使用了什么缓存框架，如果唯一此处可不写
 
   thymeleaf:
     cache: false
+
+  redis:
+    host: localhost
+    port: 6379
+    password:
 
 
 mybatis:
   typeAliasesPackage: com.thunisoft.pojo
   mapper-locations: classpath:mapper/*.xml
+#
+#security:
+#  basic:
+#    path: /**
+#  sessions: IF_REQUIRED
+#  headers:
+#    frame: false
+#    xss: true
+#  enable-csrf: true
+#  user:
+#    name: admin
+#    password: admin
+#  ignored: /login.html,/index.html
+
+logging:
+  level: warn
+
+
+management:
+  context-path: /management
+  health:
+    mail:
+      enabled: true
+
+
+info:
+  app:
+    name: "@project.name@" #从pom.xml中获取
+    description: "@project.description@"
+    version: "@project.version@"
+    spring-boot-version: "@project.parent.version@"
+
 
