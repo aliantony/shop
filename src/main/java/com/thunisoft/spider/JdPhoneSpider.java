@@ -35,7 +35,7 @@ public class JdPhoneSpider {
             String phonename = div.getElementsByClass("p-name").get(0).text();
             Phone phone = new Phone();
             phone.setId(ShopUUID.getUUID());
-            phone.setNum(num);
+            phone.setCnum(num);
             phone.setPhonename(phonename);
             phones.add(phone);
         }

@@ -8,7 +8,7 @@ CREATE TABLE `t_user` (
 
 CREATE TABLE `t_phone` (
   `id` varchar(32) NOT NULL COMMENT '主键',
-  `num` varchar(255) DEFAULT NULL COMMENT '商品编号',
+  `cnum` varchar(255) DEFAULT NULL COMMENT '商品编号',
   `phonename` varchar(255) DEFAULT NULL COMMENT '手机名',
   `screen` varchar(255) DEFAULT NULL COMMENT '屏幕尺寸',
   `disk` varchar(255) DEFAULT NULL COMMENT '容量',

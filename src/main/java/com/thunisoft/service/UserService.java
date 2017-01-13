@@ -1,12 +1,10 @@
 package com.thunisoft.service;
 
-import com.thunisoft.mapper.UserMapper;
+import com.thunisoft.repository.UserMapper;
 import com.thunisoft.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 /**
  * Created by yhan219 on 2017/1/10.

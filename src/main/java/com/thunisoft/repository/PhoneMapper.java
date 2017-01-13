@@ -1,4 +1,4 @@
-package com.thunisoft.mapper;
+package com.thunisoft.repository;
 
 import com.thunisoft.domain.Phone;
 import org.apache.ibatis.annotations.Mapper;

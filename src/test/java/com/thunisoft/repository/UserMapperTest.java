@@ -1,4 +1,4 @@
-package com.thunisoft.mapper;
+package com.thunisoft.repository;
 
 import com.thunisoft.domain.User;
 import org.junit.Test;

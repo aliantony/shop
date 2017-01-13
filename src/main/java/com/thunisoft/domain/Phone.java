@@ -1,24 +1,37 @@
 package com.thunisoft.domain;
 
+import org.apache.solr.client.solrj.beans.Field;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.solr.core.mapping.SolrDocument;
+
 import java.io.Serializable;
 
 /**
  * Created by yhan219 on 2017/1/7.
  */
+@SolrDocument(solrCoreName = "shop")
 public class Phone implements Serializable {
 
+    @Id
+    @Field
     private String id;
 
-    private String num;
+    @Field
+    private String cnum;
 
+    @Field
     private String phonename;
 
+    @Field
     private String screen;
 
+    @Field
     private String disk;
 
+    @Field
     private String memory;
 
+    @Field
     private String price;
 
     public void setId(String id) {
@@ -29,12 +42,12 @@ public class Phone implements Serializable {
         return id;
     }
 
-    public void setNum(String num) {
-        this.num = num;
+    public void setCnum(String cnum) {
+        this.cnum = cnum;
     }
 
-    public String getNum() {
-        return num;
+    public String getCnum() {
+        return cnum;
     }
 
     public void setDisk(String disk) {

@@ -1,24 +1,19 @@
 package com.thunisoft.controller;
 
-import com.sun.xml.internal.ws.api.message.ExceptionHasMessage;
 import com.thunisoft.domain.User;
-import com.thunisoft.mapper.UserMapper;
+import com.thunisoft.repository.UserMapper;
 import com.thunisoft.service.UserService;
 import com.thunisoft.utils.ShopUUID;
-import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.Optional;
 
 /**
  * Created by yhan219 on 2017/1/7.
@@ -46,9 +41,8 @@ public class UserController {
     }
 
     @GetMapping("/list.html")
-    public String userList(Model model){
-        model.addAttribute("users",userMapper.queryAll());
-        return "/user/list";
+    public ModelAndView userList(){
+        return new ModelAndView("/user/list","users",userMapper.queryAll());
     }
 
     @RequestMapping("/test")
@@ -70,9 +64,9 @@ public class UserController {
             throw new NullPointerException("用户不存在");
         }
         return user;
-    }
-    /*Optional<User> user = Optional.of(userService.getUserById(id));
+        /*Optional<User> user = Optional.of(userService.getUserById(id));
         return user.orElseThrow(() -> new NullPointerException(String.format("id异常，id：%s",user.get().getId())));
         */
+    }
 
 }
