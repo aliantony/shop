@@ -34,20 +34,20 @@ public class PhoneController {
         return "/phone/list";
     }
 
-    @GetMapping("/list/solr")
+    @GetMapping("/list/all.json")
     public @ResponseBody
     List<Phone> getAll(){
         return phoneService.getAllFromSolr();
     }
 
-    @GetMapping("/list/getByPhonename")
-    public @ResponseBody Page<Phone> getByPhonename(String phonename,@PageableDefault(value = 15,sort = {"id"},direction = Sort.Direction.DESC) Pageable pageable){
+    @GetMapping("/list/phonename-{phonename}.json")
+    public @ResponseBody Page<Phone> getByPhonename(@PathVariable String phonename,@PageableDefault(value = 15,sort = {"id"},direction = Sort.Direction.DESC) Pageable pageable){
         return phoneService.getByPhonename(phonename,pageable);
     }
 
-    @GetMapping("/list/getByCnum")
+    @GetMapping("/list/cnum-{cnum}.json")
     public @ResponseBody
-    HighlightPage<Phone> getByCnum(String cnum, @PageableDefault(value = 15,sort = {"id"},direction = Sort.Direction.DESC) Pageable pageable){
+    HighlightPage<Phone> getByCnum(@PathVariable String cnum, @PageableDefault(value = 15,sort = {"id"},direction = Sort.Direction.DESC) Pageable pageable){
         return phoneService.getByCnum(cnum,pageable);
     }
 

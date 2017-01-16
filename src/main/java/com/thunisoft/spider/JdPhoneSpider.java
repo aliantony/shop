@@ -2,6 +2,8 @@ package com.thunisoft.spider;
 
 import com.thunisoft.domain.Phone;
 import com.thunisoft.utils.ShopUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -15,6 +17,9 @@ import java.util.List;
  * Created by yhan219 on 2017/1/7.
  */
 public class JdPhoneSpider {
+
+    private static
+    Log log = LogFactory.getLog(JdPhoneSpider.class);
 
     private static String url="https://list.jd.com/list.html?cat=9987,653,655";
 
@@ -37,6 +42,7 @@ public class JdPhoneSpider {
             phone.setId(ShopUtils.getUUID());
             phone.setCnum(num);
             phone.setPhonename(phonename);
+            log.info(String.format("京东商品编号：%s\t商品名称：%s",num,phonename));
             phones.add(phone);
         }
         return phones;
@@ -48,6 +54,7 @@ public class JdPhoneSpider {
             List<Phone> list = getPhoneFromJdByPage(i);
             all.addAll(list);
         }
+        log.info("总共爬取："+all.size()+" 条数据");
         return  all;
     }
 
@@ -55,12 +62,9 @@ public class JdPhoneSpider {
         List<Phone> phones = null;
         try {
             phones = getAllPhone();
-            System.out.println(phones.size());
         } catch (IOException e) {
             e.printStackTrace();
         }
-        for (Phone p: phones ) {
-            System.out.print(p.getId()+" ");
-        }
+       // phones.forEach(phone -> System.out.println(phone.getCnum()+" \t"+phone.getPhonename()));
     }
 }
