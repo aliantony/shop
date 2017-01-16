@@ -1,7 +1,7 @@
 package com.thunisoft.spider;
 
 import com.thunisoft.domain.Phone;
-import com.thunisoft.utils.ShopUUID;
+import com.thunisoft.utils.ShopUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -34,7 +34,7 @@ public class JdPhoneSpider {
             String num = div.attr("data-sku").toString();
             String phonename = div.getElementsByClass("p-name").get(0).text();
             Phone phone = new Phone();
-            phone.setId(ShopUUID.getUUID());
+            phone.setId(ShopUtils.getUUID());
             phone.setCnum(num);
             phone.setPhonename(phonename);
             phones.add(phone);

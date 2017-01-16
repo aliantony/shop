@@ -3,7 +3,7 @@ package com.thunisoft.controller;
 import com.thunisoft.domain.User;
 import com.thunisoft.repository.UserMapper;
 import com.thunisoft.service.UserService;
-import com.thunisoft.utils.ShopUUID;
+import com.thunisoft.utils.ShopUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
@@ -35,7 +35,7 @@ public class UserController {
 
     @RequestMapping("/doAdd")
     public String addUser(User user){
-        user.setId(ShopUUID.getUUID());
+        user.setId(ShopUtils.getUUID());
         userMapper.save(user);
         return "redirect:/user/list.html";
     }

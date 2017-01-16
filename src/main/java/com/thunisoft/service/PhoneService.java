@@ -7,6 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.solr.core.query.result.HighlightPage;
+import org.springframework.data.solr.repository.Highlight;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,6 +44,14 @@ public class PhoneService {
         return list;
     }
 
+    public Phone getByIdFromSolr(String id){
+       return phoneSolrDao.findOne(id);
+    }
+
+    public Page<Phone> getByPhonename(String phonename, Pageable pageable){
+        return phoneSolrDao.findByPhonename(phonename,pageable);
+    }
+
     @Cacheable(value = "phonePageList",key = "#page+#pageSize")
     public List<Phone> getPage(int page,int pageSize){
         System.out.println("没有经过缓存");
@@ -57,4 +69,7 @@ public class PhoneService {
         return phone;
     }
 
+    public HighlightPage<Phone> getByCnum(String cnum, Pageable pageable) {
+        return phoneSolrDao.findByCnum(cnum,pageable);
+    }
 }

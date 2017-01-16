@@ -3,6 +3,12 @@ package com.thunisoft.controller;
 import com.thunisoft.domain.Phone;
 import com.thunisoft.service.PhoneService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.solr.core.query.result.HighlightPage;
+import org.springframework.data.solr.repository.Highlight;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +38,22 @@ public class PhoneController {
     public @ResponseBody
     List<Phone> getAll(){
         return phoneService.getAllFromSolr();
+    }
+
+    @GetMapping("/list/getByPhonename")
+    public @ResponseBody Page<Phone> getByPhonename(String phonename,@PageableDefault(value = 15,sort = {"id"},direction = Sort.Direction.DESC) Pageable pageable){
+        return phoneService.getByPhonename(phonename,pageable);
+    }
+
+    @GetMapping("/list/getByCnum")
+    public @ResponseBody
+    HighlightPage<Phone> getByCnum(String cnum, @PageableDefault(value = 15,sort = {"id"},direction = Sort.Direction.DESC) Pageable pageable){
+        return phoneService.getByCnum(cnum,pageable);
+    }
+
+    @GetMapping("/solr/{id}")
+    public @ResponseBody Phone getOne(@PathVariable String id){
+        return phoneService.getByIdFromSolr(id);
     }
 
 }
